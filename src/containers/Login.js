@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
 import { Auth } from "aws-amplify";
 import { useAppContext } from "../libs/contextLib";
 import "./Login.css";
@@ -11,7 +10,6 @@ import { useFormFields } from "../libs/hooksLib";
 export default function Login() {
     const { userHasAuthenticated } = useAppContext();
     const [ isLoading, setIsLoading ] = useState(false);
-    const history = useHistory();
 
     const [fields, handleFieldChange] = useFormFields({
         email: "",
@@ -31,7 +29,6 @@ export default function Login() {
         try {
             await Auth.signIn(fields.email, fields.password);
             userHasAuthenticated(true);
-            history.push("/");
         } catch (e) {
             onError(e);
             setIsLoading(false);
