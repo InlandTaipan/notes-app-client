@@ -1,0 +1,25 @@
+#Base is directory to change to before starting build
+#Publish is directory to publish (relative to root)
+#Command is build command
+
+[build]
+    base = ""
+    publish = "build"
+    command = "REACT_APP_STAGE=dev npm run build"
+
+#All deploys to main repo will inherit these settings
+[context.production]
+    command = "REACT_APP_STAGE=prod npm run build"
+
+#All deploy previews will inherit these settinsg
+[context.deploy-preview]
+    command = "REACT_APP_STAGE=dev npm run build"
+
+#All deploys that are not in an active deploy preview will inherit these settings
+[context.branch-deploy]
+    command = "REACT_APP_STAGE=dev npm run build"
+
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
