@@ -21,6 +21,5 @@ export default class ErrorBoundary extends React.Component {
         ) : (
             this.props.children
         );
-        )
     }
 }
