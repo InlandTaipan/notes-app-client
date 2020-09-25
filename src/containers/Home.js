@@ -2,6 +2,7 @@ import { API } from 'aws-amplify';
 import React, { useEffect, useState } from 'react';
 import { PageHeader, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from "react-router-dom";
 import { useAppContext } from '../libs/contextLib';
 import { onError } from "../libs/errorLib";
 import "./Home.css";
@@ -59,6 +60,15 @@ export default function Home() {
         <div className="Lander">
             <h1>Bangin'</h1>
             <p>Bangin' notes for bangin' people</p>
+
+            <div>
+                <Link to="/login" className="btn btn-info btn-lg">
+                    Login
+                </Link>
+                <Link to="/signup" className="btn btn-success btn-lg">
+                    Signup
+                </Link>
+            </div>
         </div>
         );
     }
